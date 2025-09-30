@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>data anda tercopy: AKBAR GANTENG (VIRUS)</title>
+<style>
+  body { margin:0; font-family: system-ui, sans-serif; background:#111; color:#ddd; }
+  .bsod {
+    position:fixed; inset:0; background:#010f3a; color:#cfe8ff;
+    display:flex; align-items:center; justify-content:center; padding:40px;
+    text-align:left; flex-direction:column; gap:20px; z-index:9999;
+  }
+  .bsod h1 { font-size:32px; margin:0; color:#fff; }
+  .bsod p { max-width:900px; line-height:1.5; }
+  .controls { margin-top:12px; }
+  button { padding:10px 16px; border-radius:8px; border:none; cursor:pointer; }
+  .close { background:#fff; color:#010f3a; }
+  .smaller { font-size:12px; opacity:.9; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<!-- Konten halaman normal -->
+<main style="padding:24px;">
+  <h2>Halaman Demo</h2>
+  <p>Ini halaman biasa — trigger prank akan muncul otomatis.</p>
+</main>
+
+<!-- Overlay BSOD palsu -->
+<div class="bsod" id="bsod">
+  <h1>:( Sistem mengalami masalah</h1>
+  <p>hp anda kena hack.<br>
+     Informasi kesalahan: <strong>0xDEADBEEF</strong></p>
+  <div class="controls">
+    <button class="close" id="closeBtn">Tutup (pencet kata tutup untuk lebih lanjut)</button>
+  </div>
+  <div class="smaller">Tekan <kbd>Esc</kbd> untuk menutup juga.</div>
+</div>
+
+<script>
+  // Tampilkan prank setelah 1.5 detik
+  setTimeout(()=> document.getElementById('bsod').style.display='flex', 1500);
+
+  // Tutup overlay secara aman
+  function closeBsod(){
+    const el = document.getElementById('bsod');
+    if(!el) return;
+    el.style.transition='opacity .35s';
+    el.style.opacity=0;
+    setTimeout(()=> el.remove(), 400);
+  }
+
+  document.getElementById('closeBtn').addEventListener('click', closeBsod);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeBsod(); });
+</script>
+
+</body>
+</html>
